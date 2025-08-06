@@ -7,8 +7,8 @@ from datetime import datetime, timedelta
 from flask_socketio import SocketIO , emit
 from model import Message
 app = Flask(__name__)
-CORS(app)
-socketio = SocketIO(app, cors_allowed_origins="*")
+CORS(app, origins=["https://chat-app-front-by-sujal-d34j.vercel.app/", "http://localhost:3000"])
+socketio = SocketIO(app, cors_allowed_origins=["https://chat-app-front-by-sujal-d34j.vercel.app/", "http://localhost:3000"])
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supersecretkey'  
