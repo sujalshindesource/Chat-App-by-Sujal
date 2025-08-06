@@ -8,7 +8,11 @@ from flask_socketio import SocketIO , emit
 from model import Message
 app = Flask(__name__)
 CORS(app, origins=["https://chat-app-front-by-sujal-d34j.vercel.app/", "http://localhost:3000"])
-socketio = SocketIO(app, cors_allowed_origins=["https://chat-app-front-by-sujal-d34j.vercel.app/", "http://localhost:3000"])
+socketio = SocketIO(app, 
+                   cors_allowed_origins="*",
+                   async_mode='threading',
+                   logger=True, 
+                   engineio_logger=True)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///users.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['SECRET_KEY'] = 'supersecretkey'  
